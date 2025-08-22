@@ -1,5 +1,5 @@
 
-import Namegen from './components/Namegen';
+import Namegen from '../components/Namegen';
 const Main = () => {
     return (
         <div className='Main'>

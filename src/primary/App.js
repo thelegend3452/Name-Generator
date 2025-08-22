@@ -1,4 +1,4 @@
-import './style/App.css'
+import '../style/App.css'
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Main from "./Main";
 import Nameorder from "./Nameorder";

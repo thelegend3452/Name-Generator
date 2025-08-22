@@ -1,44 +1,47 @@
 body {
   font-family: 'Arial', sans-serif;
-  background-color: #f7f7f7;
+  background-color: #FFFDD0;
   margin: 0;
   padding: 0;
 }
 
 nav {
-  background-color: #4CAF50; 
+  background-color: #010a91; 
   padding: 15px 20px;
   display: flex;
   gap: 15px;
+  box-shadow: 0 5px 10px black;
+  flex-direction: row;
 }
 .genbtn{
     border: none;
-    background-color: lightgreen;
-    color:black;
+    background-color: #010a91;
+    color:white;
     box-shadow: 0 0 5px  black;
     padding: 10px;
     border-radius: 8px;
-    margin-left: 43%;
+    margin-left: 35%;
+    font-size: 2rem;
 
 }
 .genbtn:hover{
-    background-color: green;
-    color:black;
+    background-color: black;
+    color:white;
     cursor:pointer
 }
 .orderbtn {
   border: none;
-    background-color: lightgreen;
-    color:black;
-    box-shadow: 0 0 5px  black;
-    padding: 10px;
-    border-radius: 8px;
-    margin-left: 10px;
-
+  background-color: #010a91;
+  color:white;
+  box-shadow: 0 0 5px  black;
+  padding: 10px;
+  border-radius: 8px;
+  margin-left: 10px;
+  font-size: 2rem;
 }
 .orderbtn:hover{
-    background-color: green;
-    color:black;
+    background-color: black;
+    color:white;
     cursor:pointer
 }
 
@@ -49,13 +52,15 @@ nav a {
   padding: 8px 12px;
   border-radius: 5px;
   transition: background 0.3s;
+  
 }
 
 nav a:hover {
-  background-color: #45a049;
+  background-color: #000000;
+  
 }
 
-.Main, .Nameorder {
+.Main, .second {
   margin: 40px auto;
   padding: 30px;
   max-width: 800px;
