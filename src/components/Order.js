@@ -5,7 +5,7 @@ const Order = () => {
   const [names, setNames] = useState(Array(5).fill(""));
   const [randomOrder, setRandomOrder] = useState("________");
 
-  const handleNumPeopleChange = (e) => {
+  const handleNumPeople = (e) => {
     const value = parseInt(e.target.value);
     setNumPeople(value);
     setNames(Array(value).fill("")); 
@@ -31,7 +31,7 @@ const Order = () => {
     <div>
       <label>
         Number of People: 
-        <select value={numPeople} onChange={handleNumPeopleChange}>
+        <select value={numPeople} onChange={handleNumPeople}>
           <option value={5}>5</option>
           <option value={10}>10</option>
         </select>

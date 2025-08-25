@@ -15,7 +15,7 @@ const Namegen = () => {
             
 
         } catch (error) {
-            console.log("Failed to load names", {error})
+            console.log("Failed to load names check error code", {error})
         };
         
         
