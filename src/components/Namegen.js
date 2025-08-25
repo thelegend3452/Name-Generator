@@ -2,11 +2,23 @@ import { useState } from "react";
 
 const Namegen = () => {
   const [name, setName] = useState("______");
+  const [previous, setPrevious] = useState("______")
 
-    const handlenamegen = () => {
-        const namelist = ["Marcus Bennett", "Sofia Delgado", "Ethan Carter", "Priya Sharma", "Lucas Moretti", "Mei Lin", "Alejandro Cruz","Hannah Wright", "Jamal Robinson", "Isabella Romano", "Arjun Patel", "Chloe Andersen","Dmitri Volkov", "Amina Hassan", "Gabriel Torres", "Yuki Tanaka", "Fatima Zahra", "Oliver Grant", "Leila Haddad", "Sebastian Fischer"]
-        const random = Math.floor(Math.random()* namelist.length)
-        setName(namelist[random])
+    const handlenamegen = async () => {
+        try {
+            const response = await fetch("https://randomuser.me/api/");
+            const data = await response.json();
+        
+        const randomName = `${data.results[0].name.first} ${data.results[0].name.last}`;        
+        setName(randomName)
+        setPrevious(name)
+            
+
+        } catch (error) {
+            console.log("Failed to load names", {error})
+        };
+        
+        
     }
     return (
         <div>
@@ -14,7 +26,16 @@ const Namegen = () => {
             <button className="genbtn" onClick={handlenamegen}>
                 Generate Name
             </button>
+            <div className="Pre">
+                
+                {previous && <p className="pre">Previous Name: <strong>{previous}</strong>
+                            </p>}
+            </div>
         </div>
+       
+        
+        
+        
     )
 }   
    

@@ -1,55 +1,67 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 
 const Order = () => {
-    const [names, setOrder] = useState([
-        "Marcus Bennett",
-        "Sofia Delgado",
-        "Ethan Carter",
-        "Priya Sharma",
-        "Lucas Moretti",
-        "Mei Lin",
-        "Alejandro Cruz",
-        "Hannah Wright",
-        "Jamal Robinson",
-        "Isabella Romano",
-        "Arjun Patel",
-        "Chloe Andersen", 
-        "Dmitri Volkov",
-        "Amina Hassan",
-        "Gabriel Torres",
-        "Yuki Tanaka",
-        "Fatima Zahra",
-        "Oliver Grant",
-        "Leila Haddad",
-        "Sebastian Fischer"
-    ]);
+  const [numPeople, setNumPeople] = useState(5);
+  const [names, setNames] = useState(Array(5).fill(""));
+  const [randomOrder, setRandomOrder] = useState("________");
 
-    const shuffleorder = (array) => {
-        let newarray = [...array]
-        for(let i = newarray.length - 1; i >0; i-- ) {
-            const j = Math.floor(Math.random() * (i+1));
-            [newarray[i], newarray[j]] = [newarray[j], newarray[i]];
-        }
-        return newarray
+  const handleNumPeopleChange = (e) => {
+    const value = parseInt(e.target.value);
+    setNumPeople(value);
+    setNames(Array(value).fill("")); 
+    setRandomOrder("________");
+  };
+
+  const handleInput = (index, value) => {
+    const updatedNames = [...names];
+    updatedNames[index] = value;
+    setNames(updatedNames);
+  };
+
+  const shuffleOrder = () => {
+    const newArray = [...names];
+    for (let i = newArray.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
     }
+    setNames(newArray);
+  };
 
-    const handleorder = () => {
-        setOrder(shuffleorder(names))
-    }
-    return (
-        <div>
-            <ol>
-                {names.map((name, index) => (
-                    <li key={index}>{name}</li>
-                ))}
-            </ol>
+  return (
+    <div>
+      <label>
+        Number of People: 
+        <select value={numPeople} onChange={handleNumPeopleChange}>
+          <option value={5}>5</option>
+          <option value={10}>10</option>
+        </select>
+      </label>
 
-            <button className="orderbtn" onClick={handleorder}>
-                Shuffle Names
-            </button>
-        </div>
-    )
-}
+      <div className="inputfield">
+        {names.map((name, index) => (
+          <input
+            key={index}
+            type="text"
+            placeholder={`Enter name ${index + 1}`}
+            value={name}
+            onChange={(e) => handleInput(index, e.target.value)}
+          />
+        ))}
+      </div>
+
+      
+
+      <ol>
+        {names.map((name, index) => (
+          <li key={index}>{name}</li>
+        ))}
+      </ol>
+
+      <button className="orderbtn" onClick={shuffleOrder}>
+        Shuffle Names
+      </button>
+    </div>
+  );
+};
 
 export default Order;
